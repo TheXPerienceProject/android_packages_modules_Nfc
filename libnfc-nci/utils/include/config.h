@@ -47,6 +47,7 @@ class ConfigFile {
   void parseFromFile(const std::string& file_name);
   void parseFromString(const std::string& config);
   void addConfig(const std::string& config, ConfigValue& value);
+  bool updateConfig(const std::string& config, ConfigValue& value);
 
   bool hasKey(const std::string& key);
   std::string getString(const std::string& key);
@@ -61,6 +62,5 @@ class ConfigFile {
  private:
   ConfigValue& getValue(const std::string& key);
 
-  bool updateConfig(const std::string& config, ConfigValue& value);
   std::map<std::string, ConfigValue> values_;
 };

@@ -88,7 +88,11 @@ void NfcConfig::loadConfig() {
     config_.parseFromFile(PATH_NCI_UPDATE_CONF);
   }
   for (auto config : configMap) {
-    config_.addConfig(config.first, config.second);
+    if (config_.hasKey(config.first)) {
+      config_.updateConfig(config.first, config.second);
+    } else {
+      config_.addConfig(config.first, config.second);
+    }
   }
 }
 
